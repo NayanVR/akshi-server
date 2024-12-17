@@ -1,0 +1,15 @@
+[project]
+name = "akshi-server"
+version = "0.1.0"
+description = "Akshi Server"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi[standard]>=0.115.6",
+    "openai>=1.57.4",
+    "ruff>=0.8.3",
+]
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
