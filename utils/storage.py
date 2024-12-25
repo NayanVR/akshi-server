@@ -3,7 +3,7 @@ from uuid import uuid4
 
 
 def save_audio_file(file: bytes) -> str:
-    dir_name = "public"
+    dir_name = "static"
     file_id = uuid4().hex
 
     if not os.path.exists(dir_name):

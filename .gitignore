@@ -14,4 +14,4 @@ wheels/
 .env.local
 
 # public uploads
-public/*.wav
+static/*.wav
