@@ -11,10 +11,7 @@ echo "Compiling requirements.txt from pyproject.toml..."
 uv pip compile pyproject.toml -o requirements.txt
 
 IMAGE_NAME="${DOCKER_USERNAME}/${APP_NAME}:${TAG}"
-echo "Building Docker image: ${IMAGE_NAME}..."
-docker build -t ${IMAGE_NAME} .
-
-echo "Pushing Docker image to Docker Hub..."
-docker push ${IMAGE_NAME}
+echo "Building & Pushing Docker image: ${IMAGE_NAME}..."
+docker buildx build --platform linux/amd64 -t ${IMAGE_NAME} --push .
 
 echo "Docker image ${IMAGE_NAME} has been successfully built and pushed to Docker Hub."
