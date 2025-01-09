@@ -1,6 +1,9 @@
 from utils.openai import client
+import ollama
 
-def peform_vision(img_b64: str, prompt: str) -> str:
+ollama_client = ollama.Client("http://guidelms.in:11434/")
+
+def peform_openai_vision(img_b64: str, prompt: str) -> str:
     messages = [{
         "role": "user",
         "content": [
@@ -26,3 +29,18 @@ def peform_vision(img_b64: str, prompt: str) -> str:
     )
 
     return response.choices[0].message.content # type: ignore
+
+def perform_ollama_vision(img_b64: str, prompt: str) -> str:
+    response = ollama_client.chat(
+        model='llama3.2-vision',
+        messages=[{
+            'role': 'user',
+            'content': prompt,
+            'images': [f"{img_b64}"]
+        }]
+    )
+
+    if response.message.content is None:
+        return ""
+
+    return response.message.content

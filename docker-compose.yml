@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  app:
+    image: nayanvr/akshi-server:latest
+    ports:
+      - "58219:58219"
+    env_file:
+      - .env
+    restart: always
